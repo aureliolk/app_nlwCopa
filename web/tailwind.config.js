@@ -15,7 +15,8 @@ module.exports = {
         textGray: "#E1E1E6",
         textGrayDark: "#8D8D99",
         borderCopa: "#323238",
-        bgButton: "#f7dd43"
+        bgButton: "#f7dd43",
+        bgRed: "#DB4437"
       },
       backgroundImage: {
         bgCopaImg: "url('/bgeffects.png')"
