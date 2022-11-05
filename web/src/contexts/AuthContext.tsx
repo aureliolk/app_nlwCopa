@@ -2,7 +2,7 @@
 
 import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
 import { createContext, PropsWithChildren, useState, useEffect } from "react";
-import { auth } from "./firebase";
+import { auth } from "../auth/firebase";
 
 
 interface UserProps {

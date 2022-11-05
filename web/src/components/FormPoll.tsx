@@ -1,5 +1,5 @@
 import { FormEvent, useContext, useState } from "react"
-import { AuthContext } from "../auth/AuthContext"
+import { AuthContext } from "../contexts/AuthContext"
 import { Clipboard } from "phosphor-react"
 import { api } from "../lib/axiox"
 import Button from "./Button"
@@ -21,7 +21,7 @@ export const FormCreatePool = () => {
         e.preventDefault()
         setLoading(true)
         try {
-            const res = await api.post("/pools/add", {
+            const res = await api.post("/poll/add", {
                 title: namePool
             })
             const { code } = res.data

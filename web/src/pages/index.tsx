@@ -98,22 +98,22 @@ export default function Home({ guessesCount, poolCount, userCount }: Props) {
 }
 
 
-// export const getServerSideProps = async () => {
+export const getServerSideProps = async () => {
 
 
-//   const [poolCountRes, guessCountRes, userCountRes] = await Promise.all([
-//     api.get("/pools/count"),
-//     api.get("/guesses/count"),
-//     api.get("/users/count")
-//   ])
+  const [poolCountRes, guessCountRes, userCountRes] = await Promise.all([
+    api.get("/poll/count"),
+    api.get("/guesses/count"),
+    api.get("/users/count")
+  ])
 
-//   return {
-//     props: {
-//       poolCount: poolCountRes.data.count,
-//       guessesCount: guessCountRes.data.count,
-//       userCount: userCountRes.data.count,
+  return {
+    props: {
+      poolCount: poolCountRes.data.count,
+      guessesCount: guessCountRes.data.count,
+      userCount: userCountRes.data.count,
 
-//     }
-//   }
+    }
+  }
 
-// }
+}
