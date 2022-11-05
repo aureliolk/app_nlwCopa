@@ -12,8 +12,8 @@ const Button = ({ title, typeB, onClick }: ButtonProps) => {
     return (
         <button
             onClick={onClick}
-            type={typeB === "PRIMARY" ? "button" : "submit"}
-            className={`${typeB === "PRIMARY" ? "bg-bgButton w-[171px] hover:bg-bgButton/90" : "bg-bgRed w-full flex items-center gap-2 justify-center hover:bg-bgRed/90"} text-white py-4 px-6  h-[58px] rounded text-sm font-bold text-center `}
+            type={typeB === "PRIMARY" ? "submit" : "button"}
+            className={`${typeB === "PRIMARY" ? "bg-bgButton md:w-[171px] hover:bg-bgButton/90" : "bg-bgRed w-full flex items-center gap-2 justify-center hover:bg-bgRed/90"} text-white py-4 px-6  h-[58px] rounded text-sm font-bold text-center `}
         >{typeB === "SECONDARY" && <GoogleLogo size={32} />} {title}</button>
     )
 }

@@ -19,7 +19,8 @@ module.exports = {
         bgRed: "#DB4437"
       },
       backgroundImage: {
-        bgCopaImg: "url('/bgeffects.png')"
+        bgCopaImg: "url('/bgeffects.png')",
+        bgCopaMobile: "url('/Splash.png')"
       }
 
     },
