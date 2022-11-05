@@ -1,9 +1,7 @@
-generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["referentialIntegrity"]
-}
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-generator js {
+generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["referentialIntegrity"]
 }
@@ -12,33 +10,16 @@ generator erd {
   provider = "prisma-erd-generator"
 }
 
+// datasource db {
+//   provider = "sqlite"
+//   url      = env("DATABASE_URL")
+// }
+
 datasource db {
-  provider          = "mysql"
-  url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("DATABASE_SH_URL")
-  relationMode      = "prisma"
-}
-
-model Ads {
-  id           String   @id
-  yearsPlaying String
-  nickName     String
-  idDiscord    String
-  startPlay    String
-  endPlay      String
-  chatVoice    String
-  daysPlaying  String
-  CreatedDate  DateTime @default(now())
-  ModifiedDate DateTime @default(now())
-  gamesId      String?
-}
-
-model Games {
-  id           String   @id
-  nameGame     String
-  imgUrl       String
-  CreatedDate  DateTime @default(now())
-  ModifiedDate DateTime @default(now())
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  shadowDatabaseUrl    = env("DATABASE_SH_URL")
+  referentialIntegrity = "prisma"
 }
 
 model Poll {
