@@ -5,13 +5,13 @@ import { prisma } from "../lib/prisma"
 
 
 
-export const PoolsRoute = async (fastify: FastifyInstance) => {
+export const PollsRoute = async (fastify: FastifyInstance) => {
     fastify.get("/poll/count", async () => {
         const count = await prisma.poll.count()
         return { count }
     })
 
-    fastify.get("/polls/list", async () => {
+    fastify.get("/poll/list", async () => {
         const list = await prisma.poll.findMany()
         return list
     })

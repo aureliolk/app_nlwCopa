@@ -1,5 +1,10 @@
 import cors from "@fastify/cors";
 import Fastify from "fastify";
+import { AuthRoute } from "./routes.ts/auth";
+import { GamesRoute } from "./routes.ts/game";
+import { GuessesRoute } from "./routes.ts/guesses";
+import { PollsRoute } from "./routes.ts/poll";
+import { UserRoute } from "./routes.ts/user";
 
 
 const Server = async () => {
@@ -11,12 +16,11 @@ const Server = async () => {
     })
 
 
-
-
-    /** Users**/
-
-
-    /** Guesses **/
+    await fastify.register(PollsRoute)
+    await fastify.register(UserRoute)
+    await fastify.register(GuessesRoute)
+    await fastify.register(GamesRoute)
+    await fastify.register(AuthRoute)
 
 
 
