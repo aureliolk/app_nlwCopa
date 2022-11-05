@@ -22,6 +22,9 @@ const Server = async () => {
     await fastify.register(GamesRoute)
     await fastify.register(AuthRoute)
 
+    fastify.get("/", () => {
+        return "You is Developer"
+    })
 
 
     /** Setup Listing Port **/
