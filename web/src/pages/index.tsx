@@ -1,17 +1,12 @@
 import Image from "next/image"
 import logo from "../assets/logo.svg"
 import logoMobile from "../assets/logoMobile.svg"
-
 import userAvatar from "../assets/avatares.png"
 import iconCheck from "../assets/icon.svg"
 import imagePhone from "../assets/img-phone.png"
 import { api } from "../lib/axiox"
-import { FormEvent, useContext, useEffect, useState } from "react"
-import { AuthContext } from "../auth/AuthContext"
+import { useEffect, useState } from "react"
 import Header from "../components/Header"
-import { onAuthStateChanged } from "firebase/auth"
-import { auth } from "../auth/firebase"
-import Button from "../components/Button"
 import Loading from "../components/Loading"
 import { FormCreatePool } from "../components/FormPoll"
 import { PlusCircle } from "phosphor-react"
@@ -26,17 +21,13 @@ export default function Home({ guessesCount, poolCount, userCount }: Props) {
 
   const [loading, setLoading] = useState(false)
 
-  // useEffect(() => {
-  //   setLoading(true)
-  //   setTimeout(() => {
-  //     setLoading(false)
-  //   }, 3000)
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000)
 
-  // }, [])
-
-
-
-
+  }, [])
 
   return (
     <>
