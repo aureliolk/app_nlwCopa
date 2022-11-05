@@ -31,7 +31,8 @@ export default function Home({ guessesCount, poolCount, userCount }: Props) {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
+      <h1>Titutlo de Tudo</h1>
       <div className="flex max-w-[1024px] justify-evenly max-h-[577px] m-auto max-md:hidden">
         <div className="flex flex-col justify-between w-[525px] ">
           <Image src={logo} alt="" quality={100} />
