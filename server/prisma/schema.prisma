@@ -19,27 +19,27 @@ datasource db {
   relationMode      = "prisma"
 }
 
-model Ads {
-  id           String   @id
-  yearsPlaying String
-  nickName     String
-  idDiscord    String
-  startPlay    String
-  endPlay      String
-  chatVoice    String
-  daysPlaying  String
-  CreatedDate  DateTime @default(now())
-  ModifiedDate DateTime @default(now())
-  gamesId      String?
-}
+// model Ads {
+//   id           String   @id
+//   yearsPlaying String
+//   nickName     String
+//   idDiscord    String
+//   startPlay    String
+//   endPlay      String
+//   chatVoice    String
+//   daysPlaying  String
+//   CreatedDate  DateTime @default(now())
+//   ModifiedDate DateTime @default(now())
+//   gamesId      String?
+// }
 
-model Games {
-  id           String   @id
-  nameGame     String
-  imgUrl       String
-  CreatedDate  DateTime @default(now())
-  ModifiedDate DateTime @default(now())
-}
+// model Games {
+//   id           String   @id
+//   nameGame     String
+//   imgUrl       String
+//   CreatedDate  DateTime @default(now())
+//   ModifiedDate DateTime @default(now())
+// }
 
 model Poll {
   id      String  @id @default(cuid())
