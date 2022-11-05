@@ -8,9 +8,9 @@ generator js {
   previewFeatures = ["referentialIntegrity"]
 }
 
-generator erd {
-  provider = "prisma-erd-generator"
-}
+// generator erd {
+//   provider = "prisma-erd-generator"
+// }
 
 datasource db {
   provider          = "mysql"
