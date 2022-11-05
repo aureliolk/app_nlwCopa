@@ -13,7 +13,7 @@ import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "../auth/firebase"
 import Button from "../components/Button"
 import Loading from "../components/Loading"
-import { FormCreatePool } from "../components/FormPool"
+import { FormCreatePool } from "../components/FormPoll"
 import { PlusCircle } from "phosphor-react"
 
 interface Props {
