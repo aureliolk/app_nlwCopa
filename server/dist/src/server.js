@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const cors_1 = __importDefault(require("@fastify/cors"));
+const jwt_1 = __importDefault(require("@fastify/jwt"));
 const fastify_1 = __importDefault(require("fastify"));
 const auth_1 = require("./routes.ts/auth");
 const game_1 = require("./routes.ts/game");
@@ -16,6 +17,9 @@ const Server = async () => {
     });
     await fastify.register(cors_1.default, {
         origin: true
+    });
+    await fastify.register(jwt_1.default, {
+        secret: `${process.env.SECRET_TOKEN}`
     });
     await fastify.register(poll_1.PollsRoute);
     await fastify.register(user_1.UserRoute);

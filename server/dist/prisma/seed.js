@@ -36,7 +36,7 @@ const Main = async () => {
             secondTeamCountryCode: "AR",
             guesses: {
                 create: {
-                    firsTeamPoints: 2,
+                    firstTeamPoints: 2,
                     secondTeamPoints: 1,
                     participant: {
                         connect: {
