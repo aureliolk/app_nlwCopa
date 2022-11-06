@@ -1,9 +1,13 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthRoute = void 0;
 const zod_1 = require("zod");
 const prisma_1 = require("../lib/prisma");
 const authentication_1 = require("../plugins/authentication");
+const node_fetch_1 = __importDefault(require("node-fetch"));
 const AuthRoute = async (fastify) => {
     fastify.get("/me", { onRequest: [authentication_1.authentication] }, async (req) => {
         return { user: req.user };
@@ -13,7 +17,7 @@ const AuthRoute = async (fastify) => {
             access_token: zod_1.z.string()
         });
         const { access_token } = createUser.parse(req.body);
-        const userResponse = await fetch("https://www.googleapis.com/oauth2/v2/userinfo", {
+        const userResponse = await (0, node_fetch_1.default)("https://www.googleapis.com/oauth2/v2/userinfo", {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${access_token}`
