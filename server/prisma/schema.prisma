@@ -41,6 +41,7 @@ datasource db {
 //   ModifiedDate DateTime @default(now())
 // }
 
+// Tabela de Bolão
 model Poll {
   id      String  @id @default(cuid())
   title   String
@@ -54,24 +55,27 @@ model Poll {
   owner       User?          @relation(fields: [ownerId], references: [id])
 }
 
+// Tabela de Participantes
 model Participants {
   id     String @id @default(cuid())
   userId String
   pollId String
 
-  guesses Gess[]
-  user    User   @relation(fields: [userId], references: [id])
-  poll    Poll   @relation(fields: [pollId], references: [id])
+  guesses Guess[]
+  user    User    @relation(fields: [userId], references: [id])
+  poll    Poll    @relation(fields: [pollId], references: [id])
 
   @@unique([userId, pollId])
 }
 
+//Tabela de Usuário
 model User {
   id String @id @default(cuid())
 
   name      String
   email     String   @unique
   avatarUrl String?
+  googleId  String?  @unique
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt()
 
@@ -79,6 +83,7 @@ model User {
   ownPolls        Poll[]
 }
 
+// Tabela de Jogos
 model Game {
   id String @id @default(cuid())
 
@@ -89,13 +94,13 @@ model Game {
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt()
 
-  guesses Gess[]
+  guesses Guess[]
 }
 
-model Gess {
+model Guess {
   id String @id @default(cuid())
 
-  firsTeamPoints   Int
+  firstTeamPoints  Int
   secondTeamPoints Int
   participantsId   String
   gameId           String
@@ -103,4 +108,6 @@ model Gess {
 
   participant Participants @relation(fields: [participantsId], references: [id])
   game        Game         @relation(fields: [gameId], references: [id])
+
+  @@unique([participantsId, gameId])
 }

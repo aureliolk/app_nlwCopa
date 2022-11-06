@@ -1,5 +1,7 @@
 import cors from "@fastify/cors";
+import jwt from "@fastify/jwt";
 import Fastify from "fastify";
+import { env } from "node:process";
 import { AuthRoute } from "./routes.ts/auth";
 import { GamesRoute } from "./routes.ts/game";
 import { GuessesRoute } from "./routes.ts/guesses";
@@ -15,7 +17,9 @@ const Server = async () => {
         origin: true
     })
 
-
+    await fastify.register(jwt, {
+        secret: `${process.env.SECRET_TOKEN}`
+    })
     await fastify.register(PollsRoute)
     await fastify.register(UserRoute)
     await fastify.register(GuessesRoute)
