@@ -19,7 +19,7 @@ const Header = ({ auth }: FormCreatePoolProps) => {
                     </div>
 
                     <div>
-                    
+                    {/* <Image src={} alt={} */}
                     <button onClick={logout}>Sair</button>  
                     </div>
                 </div>
