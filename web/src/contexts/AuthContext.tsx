@@ -1,11 +1,10 @@
 //Inside the AuthContext file.
-
-import axios from "axios";
 import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
 import { createContext, PropsWithChildren, useState, useEffect } from "react";
 import { auth } from "../auth/firebase";
 import { api } from "../lib/axiox";
-
+import { deleteCookie, getCookie, setCookie } from 'cookies-next';
+import { useRouter } from 'next/router'
 
 interface UserProps {
     name: string | null
@@ -31,6 +30,7 @@ export const AuthContext = createContext({} as AuthContextProps)
 export const AuthContextProvider = ({ children }: PropsWithChildren) => {
     const [user, setUser] = useState({} as UserProps)
     const [isLoading, setIsLoading] = useState(false)
+    const router = useRouter()
 
     const login = () => {
         setIsLoading(true)
@@ -38,18 +38,18 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
             .then(async (result) => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const access_token = credential?.accessToken;
-                // const user = result.user;
 
-                const userId = await api.post("/users", {
-                    access_token
+                setCookie("access_token", access_token, { maxAge: 60 * 6 * 24 })
+
+                const token = await api.post("/users", {
+                    access_token: getCookie("access_token")
                 })
+                console.log("token:" + {token})
+                
+                api.defaults.headers.common["Authorization"] = `Bearer ${token.data}`
 
-                api.defaults.headers.common["Authorization"] = `Bearer ${userId.data}`
-
-                const userInfor = await api.get("/me")
-
-                console.log(userInfor)
-
+                
+                router.push("/")
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -66,11 +66,24 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
     const logout = () => {
         setIsLoading(true)
         auth.signOut();
+        deleteCookie("access_token")
+        router.push("/")
         setIsLoading(false)
         console.log("logout");
     };
 
-
+    useEffect(() => {
+        onAuthStateChanged(auth,async (user) => {
+            if (user) {
+                setUser({
+                    name: user.displayName,
+                    avatar: user.photoURL
+                })
+            } else {
+                console.log("no user");
+            }
+        });
+    }, []);
 
 
     return (

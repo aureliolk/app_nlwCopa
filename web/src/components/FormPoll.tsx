@@ -7,8 +7,11 @@ import Loading from "./Loading"
 
 
 
+interface FormCreatePoolProps{
+    auth : string
+}
 
-export const FormCreatePool = () => {
+export const FormCreatePool = ({auth}:FormCreatePoolProps) => {
     const [namePool, setNamePool] = useState("")
     const [code, setCode] = useState("")
     const { user, login, isLoading } = useContext(AuthContext)
@@ -47,7 +50,7 @@ export const FormCreatePool = () => {
 
     return (
         <form className="flex gap-1 flex-col" onSubmit={createPool}>
-            {user.name ? (
+            {auth ? (
                 <div className="flex flex-col gap-2">
                     <div className="flex flex-col gap-2  md:flex-row md:gap-0">
                         <input

@@ -1,23 +1,31 @@
-import { useContext } from "react"
+import Image from "next/image"
+import { use, useContext } from "react"
 import { AuthContext } from "../contexts/AuthContext"
 
+interface FormCreatePoolProps {
+    auth: string
+}
 
-const Header = () => {
+const Header = ({ auth }: FormCreatePoolProps) => {
     const { user, login, logout } = useContext(AuthContext)
 
+    console.log(user.avatar)
     return (
-        <div className="w-[1200px] border border-borderCopa bg-white/25 rounded p-1 flex justify-between max-md:hidden">
-            {user.name ? (
-                <div className="flex flex-col items-start">
-                    <div><strong>Bem vindo:</strong> {user.name}</div>
-                    <button onClick={logout}>Sair</button>
+        <>
+            {auth && (
+                <div className="absolute top-0 w-[1200px] border m-auto border-borderCopa bg-white/25 rounded p-1 flex justify-between max-md:hidden">
+                    <div>
+                        <div><strong>Bem vindo:</strong> {user.name}</div>
+                    </div>
+
+                    <div>
+                    
+                    <button onClick={logout}>Sair</button>  
+                    </div>
                 </div>
-            ) : (
-                <button onClick={login}>Entrar</button>
             )
             }
-        </div >
-
+        </>
     )
 }
 

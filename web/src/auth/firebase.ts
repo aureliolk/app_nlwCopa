@@ -7,9 +7,9 @@ const firebaseConfig = {
     authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
     projectId: process.env.NEXT_PUBLIC_PROJECTID,
     storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
-    messagingSenderId: process.env.NEXT_PUBLIC_MENSSAGESENDID,
+    messagingSenderId: process.env.NEXT_PUBLIC_MENSSAGINGSENDERID,
     appId: process.env.NEXT_PUBLIC_APPID,
-    measurementId: process.env.NEXT_PUBLIC_MEASUREMENTID
+    measurementId: process.env.NEXT_PUBLIC_MENSURAMENTID
 };
 
 if (!getApps().length) {
