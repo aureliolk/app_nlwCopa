@@ -33,11 +33,10 @@ export default function Home({ guessesCount, poolCount, userCount, auth }: Props
 
   return (
     <>
-    <div className="bg-bgCopa flex-col justify-center items-center h-screen md:flex md:bg-bgCopaImg bg-center bg-no-repeat bg-cover">
-      <Header auth={auth}/>
-      {screenWidth > 768 ? (
+      <div className="bg-bgCopa flex-col justify-center items-center h-screen md:flex md:bg-bgCopaImg bg-center bg-no-repeat bg-cover">
+        <Header auth={auth} />
         <div className={`${auth ? "flex max-w-[1200px] justify-evenly mx-auto max-md:hidden" : "flex max-w-[1200px] justify-evenly max-h-[577px] m-auto max-md:hidden"}`}>
-          <div className={`${auth ? "flex flex-col justify-between w-[525px] mt-16":"flex flex-col justify-between w-[525px]"}`}>
+          <div className={`${auth ? "flex flex-col justify-between w-[525px] mt-16" : "flex flex-col justify-between w-[525px]"}`}>
             <Image src={logo} alt="" quality={100} />
             <h1 className="text-5xl font-bold leading-[125%] text-white">Crie seu próprio bolão da copa e compartilhe entre amigos!</h1>
             <div className="flex items-center text-white">
@@ -67,8 +66,7 @@ export default function Home({ guessesCount, poolCount, userCount, auth }: Props
             <Image src={imagePhone} alt="Imagem do App" quality={100} />
           </div>
         </div>
-      ) : (
-        <>
+        <div className="md:hidden">
           {loading ? (
             <div className="bg-bgCopaMobile w-full h-screen bg-cover ">
               <div className="absolute bottom-[40%] left-[45%] md:hidden">
@@ -88,9 +86,10 @@ export default function Home({ guessesCount, poolCount, userCount, auth }: Props
               </div>
             </div>
           )}
-        </>
-      )}
-    </div>
+        </div>
+
+
+      </div>
     </>
   )
 }
@@ -99,11 +98,11 @@ export default function Home({ guessesCount, poolCount, userCount, auth }: Props
 export const getServerSideProps: GetServerSideProps<any> = async (ctx) => {
 
   const auth = ctx.req.cookies.access_token || null
-   
+
   const [poolCountRes, guessCountRes, userCountRes] = await Promise.all([
     api.get("/poll/count"),
     api.get("/guesses/count"),
-    api.get("/users/count"), 
+    api.get("/users/count"),
   ])
 
 
