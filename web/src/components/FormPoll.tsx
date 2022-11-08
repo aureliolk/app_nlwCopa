@@ -14,7 +14,7 @@ interface FormCreatePoolProps{
 export const FormCreatePool = ({auth}:FormCreatePoolProps) => {
     const [namePool, setNamePool] = useState("")
     const [code, setCode] = useState("")
-    const { user, login, isLoading } = useContext(AuthContext)
+    const { login, isLoading } = useContext(AuthContext)
     const [loading, setLoading] = useState(false)
     const [isCodeLoading, setIsCodeLoading] = useState(false)
 
@@ -24,7 +24,7 @@ export const FormCreatePool = ({auth}:FormCreatePoolProps) => {
         e.preventDefault()
         setLoading(true)
         try {
-            const res = await api.post("/poll/add", {
+            const res = await api.post("/polls", {
                 title: namePool
             })
             const { code } = res.data

@@ -22,9 +22,6 @@ interface AuthContextProps {
 const provider = new GoogleAuthProvider();
 
 
-
-
-
 export const AuthContext = createContext({} as AuthContextProps)
 
 export const AuthContextProvider = ({ children }: PropsWithChildren) => {
@@ -46,8 +43,7 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
                 })
                 console.log("token:" + {token})
                 
-                api.defaults.headers.common["Authorization"] = `Bearer ${token.data}`
-
+                // api.defaults.headers.common["Authorization"] = `Bearer ${token.data}`
                 
                 router.push("/")
             })
