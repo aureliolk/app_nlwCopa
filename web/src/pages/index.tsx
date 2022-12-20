@@ -33,10 +33,9 @@ export default function Home({ guessesCount, poolCount, userCount, auth }: Props
 
   return (
     <>
-      <div className="bg-bgCopa flex-col justify-center items-center h-screen md:flex md:bg-bgCopaImg bg-center bg-no-repeat bg-cover">
         <Header auth={auth} />
-        <div className={`${auth ? "flex max-w-[1200px] justify-evenly mx-auto max-md:hidden" : "flex max-w-[1200px] justify-evenly max-h-[577px] m-auto max-md:hidden"}`}>
-          <div className={`${auth ? "flex flex-col justify-between w-[525px] mt-16" : "flex flex-col justify-between w-[525px]"}`}>
+        <div className="flex justify-evenly items-center mx-auto max-md:hidden max-lg:flex-col-reverse max-lg:p-5 max-w-[1200px]">
+          <div className="flex flex-col w-1/2 gap-y-5">
             <Image src={logo} alt="" quality={100} />
             <h1 className="text-5xl font-bold leading-[125%] text-white">Crie seu próprio bolão da copa e compartilhe entre amigos!</h1>
             <div className="flex items-center text-white">
@@ -62,9 +61,8 @@ export default function Home({ guessesCount, poolCount, userCount, auth }: Props
               </div>
             </div>
           </div>
-          <div className="w-[518px]">
-            <Image src={imagePhone} alt="Imagem do App" quality={100} />
-          </div>
+          <Image src={imagePhone} alt="Imagem do App" quality={100} />
+          
         </div>
         <div className="md:hidden">
           {loading ? (
@@ -74,7 +72,7 @@ export default function Home({ guessesCount, poolCount, userCount, auth }: Props
               </div>
             </div>
           ) : (
-            <div className="bg-black w-full h-screen  justify-center hidden flex-col gap-20 items-center py-10 px-5 max-md:flex">
+            <div className="w-full h-screen  justify-center hidden flex-col gap-20 items-center py-10 px-5 max-md:flex">
               <Image src={logoMobile} alt="logo copa" quality={100} className="border w-[250px]" />
               <h1 className="text-white text-2xl text-center font-bold max-md:max-w-[500px]">
                 Crie seu próprio bolão da copa e compartilhe entre amigos!
@@ -87,9 +85,6 @@ export default function Home({ guessesCount, poolCount, userCount, auth }: Props
             </div>
           )}
         </div>
-
-
-      </div>
     </>
   )
 }
